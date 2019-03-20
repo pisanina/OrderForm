@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewOrder));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,26 +39,21 @@
             this.add_button = new System.Windows.Forms.Button();
             this.delete_button = new System.Windows.Forms.Button();
             this.change_button = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.SaveToDB_button = new System.Windows.Forms.Button();
+            this.SaveToXml_button = new System.Windows.Forms.Button();
             this.Name_textBox = new System.Windows.Forms.TextBox();
             this.LastName_textBox = new System.Windows.Forms.TextBox();
             this.DateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Products_dataGridView = new System.Windows.Forms.DataGridView();
             this.ProductName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.getProductListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.listOfProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.listOfProducts = new OrderForm.ListOfProducts();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.getProductListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.getProductListTableAdapter = new OrderForm.ListOfProductsTableAdapters.GetProductListTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.getProductListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.listOfProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.Products_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductListBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listOfProductsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listOfProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getProductListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -102,17 +97,19 @@
             this.change_button.UseVisualStyleBackColor = true;
             this.change_button.Click += new System.EventHandler(this.change_button_Click);
             // 
-            // button4
+            // SaveToDB_button
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.SaveToDB_button, "SaveToDB_button");
+            this.SaveToDB_button.Name = "SaveToDB_button";
+            this.SaveToDB_button.UseVisualStyleBackColor = true;
+            this.SaveToDB_button.Click += new System.EventHandler(this.SaveToDB_button_Click);
             // 
-            // button5
+            // SaveToXml_button
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.SaveToXml_button, "SaveToXml_button");
+            this.SaveToXml_button.Name = "SaveToXml_button";
+            this.SaveToXml_button.UseVisualStyleBackColor = true;
+            this.SaveToXml_button.Click += new System.EventHandler(this.SaveToXml_button_Click);
             // 
             // Name_textBox
             // 
@@ -136,60 +133,45 @@
             this.DateOfBirth.Name = "DateOfBirth";
             this.DateOfBirth.Value = new System.DateTime(1980, 1, 1, 16, 3, 0, 0);
             // 
-            // dataGridView1
+            // Products_dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Products_dataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Products_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.Products_dataGridView, "Products_dataGridView");
+            this.Products_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
             this.Quantity,
             this.Price,
             this.Id});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Products_dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Products_dataGridView.MultiSelect = false;
+            this.Products_dataGridView.Name = "Products_dataGridView";
+            this.Products_dataGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_CellLeave);
+            this.Products_dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_CellValueChanged);
+            this.Products_dataGridView.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_RowLeave);
+            this.Products_dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Products_dataGridView_RowsAdded);
+            this.Products_dataGridView.Validating += new System.ComponentModel.CancelEventHandler(this.Products_dataGridView_Validating);
             // 
             // ProductName
             // 
             this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ProductName.DataPropertyName = "Name";
-            this.ProductName.DataSource = this.getProductListBindingSource1;
-            this.ProductName.DisplayMember = "Name";
             resources.ApplyResources(this.ProductName, "ProductName");
             this.ProductName.Name = "ProductName";
-            this.ProductName.ValueMember = "Id";
-            // 
-            // getProductListBindingSource1
-            // 
-            this.getProductListBindingSource1.DataMember = "GetProductList";
-            this.getProductListBindingSource1.DataSource = this.listOfProductsBindingSource;
-            // 
-            // listOfProductsBindingSource
-            // 
-            this.listOfProductsBindingSource.DataSource = this.listOfProducts;
-            this.listOfProductsBindingSource.Position = 0;
-            // 
-            // listOfProducts
-            // 
-            this.listOfProducts.DataSetName = "ListOfProducts";
-            this.listOfProducts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Quantity
             // 
@@ -208,26 +190,18 @@
             this.Id.DataPropertyName = "Id";
             resources.ApplyResources(this.Id, "Id");
             this.Id.Name = "Id";
-            // 
-            // getProductListBindingSource
-            // 
-            this.getProductListBindingSource.DataMember = "GetProductList";
-            this.getProductListBindingSource.DataSource = this.listOfProductsBindingSource;
-            // 
-            // getProductListTableAdapter
-            // 
-            this.getProductListTableAdapter.ClearBeforeFill = true;
+            this.Id.ReadOnly = true;
             // 
             // NewOrder
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.Products_dataGridView);
             this.Controls.Add(this.DateOfBirth);
             this.Controls.Add(this.LastName_textBox);
             this.Controls.Add(this.Name_textBox);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.SaveToXml_button);
+            this.Controls.Add(this.SaveToDB_button);
             this.Controls.Add(this.change_button);
             this.Controls.Add(this.delete_button);
             this.Controls.Add(this.add_button);
@@ -237,11 +211,9 @@
             this.Controls.Add(this.label1);
             this.Name = "NewOrder";
             this.Load += new System.EventHandler(this.NewOrder_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Products_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductListBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listOfProductsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listOfProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getProductListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,16 +228,14 @@
         private System.Windows.Forms.Button add_button;
         private System.Windows.Forms.Button delete_button;
         private System.Windows.Forms.Button change_button;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button SaveToDB_button;
+        private System.Windows.Forms.Button SaveToXml_button;
         private System.Windows.Forms.TextBox Name_textBox;
         private System.Windows.Forms.TextBox LastName_textBox;
         private System.Windows.Forms.DateTimePicker DateOfBirth;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Products_dataGridView;
         private System.Windows.Forms.BindingSource listOfProductsBindingSource;
-        private ListOfProducts listOfProducts;
         private System.Windows.Forms.BindingSource getProductListBindingSource;
-        private ListOfProductsTableAdapters.GetProductListTableAdapter getProductListTableAdapter;
         private System.Windows.Forms.BindingSource getProductListBindingSource1;
         private System.Windows.Forms.DataGridViewComboBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;

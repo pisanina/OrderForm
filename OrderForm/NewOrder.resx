@@ -189,13 +189,13 @@
     <value>32, 154</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 25</value>
+    <value>158, 25</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Data Urodzenia</value>
+    <value>Data urodzenia</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -216,7 +216,7 @@
     <value>Microsoft Sans Serif, 15.75pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 361</value>
+    <value>23, 298</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>217, 25</value>
@@ -243,7 +243,7 @@
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="add_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 238</value>
+    <value>37, 216</value>
   </data>
   <data name="add_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 51</value>
@@ -270,7 +270,7 @@
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="delete_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 238</value>
+    <value>237, 216</value>
   </data>
   <data name="delete_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 51</value>
@@ -297,7 +297,7 @@
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="change_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 238</value>
+    <value>437, 216</value>
   </data>
   <data name="change_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 51</value>
@@ -320,58 +320,58 @@
   <data name="&gt;&gt;change_button.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="button4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="SaveToDB_button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="SaveToDB_button.Location" type="System.Drawing.Point, System.Drawing">
     <value>353, 765</value>
   </data>
-  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SaveToDB_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 51</value>
   </data>
-  <data name="button4.TabIndex" type="System.Int32, mscorlib">
+  <data name="SaveToDB_button.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="button4.Text" xml:space="preserve">
+  <data name="SaveToDB_button.Text" xml:space="preserve">
     <value>Zapisz do bazy danych</value>
   </data>
-  <data name="&gt;&gt;button4.Name" xml:space="preserve">
-    <value>button4</value>
+  <data name="&gt;&gt;SaveToDB_button.Name" xml:space="preserve">
+    <value>SaveToDB_button</value>
   </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+  <data name="&gt;&gt;SaveToDB_button.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SaveToDB_button.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SaveToDB_button.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="button5.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="SaveToXml_button.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
-  <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>603, 764</value>
+  <data name="SaveToXml_button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>604, 764</value>
   </data>
-  <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SaveToXml_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 51</value>
   </data>
-  <data name="button5.TabIndex" type="System.Int32, mscorlib">
+  <data name="SaveToXml_button.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="button5.Text" xml:space="preserve">
+  <data name="SaveToXml_button.Text" xml:space="preserve">
     <value>Zapisz do XML</value>
   </data>
-  <data name="&gt;&gt;button5.Name" xml:space="preserve">
-    <value>button5</value>
+  <data name="&gt;&gt;SaveToXml_button.Name" xml:space="preserve">
+    <value>SaveToXml_button</value>
   </data>
-  <data name="&gt;&gt;button5.Type" xml:space="preserve">
+  <data name="&gt;&gt;SaveToXml_button.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SaveToXml_button.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SaveToXml_button.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="Name_textBox.Font" type="System.Drawing.Font, System.Drawing">
@@ -449,20 +449,11 @@
   <data name="&gt;&gt;DateOfBirth.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="dataGridView1.ColumnHeadersHeight" type="System.Int32, mscorlib">
+  <data name="Products_dataGridView.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
   <metadata name="ProductName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="getProductListBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 73</value>
-  </metadata>
-  <metadata name="listOfProductsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>225, 17</value>
-  </metadata>
-  <metadata name="listOfProducts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
   </metadata>
   <data name="ProductName.HeaderText" xml:space="preserve">
     <value>Nazwa produktu</value>
@@ -491,35 +482,38 @@
   <data name="Id.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 400</value>
+  <data name="Products_dataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 327</value>
   </data>
-  <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>743, 347</value>
+  <data name="Products_dataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>743, 422</value>
   </data>
-  <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
+  <data name="Products_dataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.Name" xml:space="preserve">
-    <value>dataGridView1</value>
+  <data name="&gt;&gt;Products_dataGridView.Name" xml:space="preserve">
+    <value>Products_dataGridView</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.Type" xml:space="preserve">
+  <data name="&gt;&gt;Products_dataGridView.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Products_dataGridView.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Products_dataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="getProductListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>591, 17</value>
+  <metadata name="getProductListBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 73</value>
   </metadata>
-  <metadata name="getProductListTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>962, 17</value>
+  <metadata name="listOfProductsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>225, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>75</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -535,24 +529,6 @@
   </data>
   <data name="&gt;&gt;ProductName.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;getProductListBindingSource1.Name" xml:space="preserve">
-    <value>getProductListBindingSource1</value>
-  </data>
-  <data name="&gt;&gt;getProductListBindingSource1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listOfProductsBindingSource.Name" xml:space="preserve">
-    <value>listOfProductsBindingSource</value>
-  </data>
-  <data name="&gt;&gt;listOfProductsBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listOfProducts.Name" xml:space="preserve">
-    <value>listOfProducts</value>
-  </data>
-  <data name="&gt;&gt;listOfProducts.Type" xml:space="preserve">
-    <value>OrderForm.ListOfProducts, ListOfProducts.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Quantity.Name" xml:space="preserve">
     <value>Quantity</value>
@@ -572,17 +548,17 @@
   <data name="&gt;&gt;Id.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;getProductListBindingSource.Name" xml:space="preserve">
-    <value>getProductListBindingSource</value>
+  <data name="&gt;&gt;getProductListBindingSource1.Name" xml:space="preserve">
+    <value>getProductListBindingSource1</value>
   </data>
-  <data name="&gt;&gt;getProductListBindingSource.Type" xml:space="preserve">
+  <data name="&gt;&gt;getProductListBindingSource1.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;getProductListTableAdapter.Name" xml:space="preserve">
-    <value>getProductListTableAdapter</value>
+  <data name="&gt;&gt;listOfProductsBindingSource.Name" xml:space="preserve">
+    <value>listOfProductsBindingSource</value>
   </data>
-  <data name="&gt;&gt;getProductListTableAdapter.Type" xml:space="preserve">
-    <value>OrderForm.ListOfProductsTableAdapters.GetProductListTableAdapter, ListOfProducts.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;listOfProductsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>NewOrder</value>
