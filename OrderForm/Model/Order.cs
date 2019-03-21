@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OrderForm.Model
 {
-   public class Order
+    public class Order
     {
-        public Client Customer        { get; set; }
+        public Client Customer { get; set; }
         public List<Product> Products { get; set; }
+
+        public Order() {  }
+
+        public Order(Client customer, List<Product> products)
+        {
+            Customer = customer;
+            Products = products;
+        }
     }
+    
+   
 }

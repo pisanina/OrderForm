@@ -5,7 +5,7 @@ Create Table Product
 Price smallmoney not null,
 Constraint PK_Product_Id Primary key (Id),
 Constraint UC_Product_Name Unique ([Name]),
-Constraint CH_Product_Availability CHECK (Availability >=0),
+Constraint CH_Product_Availability CHECK ([Availability] >=0),
 Constraint CH_Product_Price CHECK (Price >=0))
 
 
@@ -42,6 +42,11 @@ Constraint CH_ProductOrder_Quantity CHECK (Quantity >=0),
 Constraint CH_ProductOrder_ActualPrice CHECK (ActualPrice >=0),
 Constraint FK_ProductOrder_OrderId_Order_Id Foreign Key (OrderId) References [Order](Id))
 
+Go
+CREATE LOGIN [orderForm] WITH PASSWORD=N'MTyHHRKM5UP2Q6LX+eIUrW+daTSe855TZXmKfjNR0Ds=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+Go
+CREATE USER [orderForm] FOR LOGIN [orderForm] WITH DEFAULT_SCHEMA=[dbo]
+
 
 Go 
 Create Type ProductList As Table
@@ -51,16 +56,10 @@ Create Type ProductList As Table
 Go
 Grant Execute On Type:: ProductList To orderForm
 
-
-Go
-CREATE LOGIN [orderForm] WITH PASSWORD=N'MTyHHRKM5UP2Q6LX+eIUrW+daTSe855TZXmKfjNR0Ds=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-Go
-CREATE USER [orderForm] FOR LOGIN [orderForm] WITH DEFAULT_SCHEMA=[dbo]
-
 Go
 Create Procedure GetProductList
 AS
-Select Id, Name, Price From Product
+	Select Id, Name, Price From Product
 
 Go
   Grant EXECUTE ON GetProductList to orderForm  
@@ -75,18 +74,18 @@ Create Procedure [dbo].[NewOrder]
   begin
 	begin try
 		BEGIN TRANSACTION 
-			  Insert Into Client (FirstName, LastName, BirthDate) Values 
-									 (@FirstName, @LastName, @BirthDate)
 
-				Update Product Set [Availability] -= Lop.Quantity 
+			Insert Into Client (FirstName, LastName, BirthDate) Values 
+									(@FirstName, @LastName, @BirthDate)
+
+			Update Product Set [Availability] -= Lop.Quantity 
 				From Product Inner Join @ListOfProduct AS Lop ON Product.Id=Lop.ProductId
 
-				Insert Into [Order] (ClientId) values (Scope_Identity())
+			Insert Into [Order] (ClientId) values (Scope_Identity())
 
-			  Insert Into [ProductOrder] (OrderId, ProductId, Quantity, ActualPrice) 
+			Insert Into [ProductOrder] (OrderId, ProductId, Quantity, ActualPrice) 
 				Select SCOPE_IDENTITY(), ProductId, Quantity, Price   From @ListOfProduct 
-				Join Product On Product.Id = ProductId
-
+					Join Product On Product.Id = ProductId
 
 		COMMIT TRANSACTION 
 	end try

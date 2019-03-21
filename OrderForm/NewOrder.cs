@@ -36,7 +36,16 @@ namespace OrderForm
 
         private void NewOrder_Load(object sender, EventArgs e)
         {
-            var dt =_dbRepo.Read();
+            DataTable dt;
+            try
+            {
+                dt = _dbRepo.Read();
+            }
+            catch
+            {
+                MessageBox.Show("Błąd połączenia z bazą danych!");
+                return;
+            }
 
             this.ProductName.DisplayMember = "Name";
             this.ProductName.ValueMember = "Id";
@@ -48,23 +57,30 @@ namespace OrderForm
         {
             if (Products_dataGridView.Rows.Count > 0)
             {
-                var cos =  Products_dataGridView.Rows[Products_dataGridView.RowCount-1].Cells[0].Value;
+                var productIdFromLastRow =  Products_dataGridView.Rows[Products_dataGridView.RowCount-1]
+                    .Cells[Constant.ProductSelectionColumnIndex].Value;
 
-                if (cos is null) { MessageBox.Show("Proszę wybrać produkt"); }
+                if (productIdFromLastRow is null)
+                {
+                    MessageBox.Show("Proszę wybrać produkt");
+                }
                 else
                 {
+                    MakeAllRowsReadonly();
                     Products_dataGridView.Rows.Add();
-
-                    for (int i = 0; i < Products_dataGridView.RowCount-1; i++)
-                    {
-                        Products_dataGridView.Rows[i].ReadOnly = true;
-                        Products_dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
-                    }
-                  
                 }
             }
             else
                 Products_dataGridView.Rows.Add();
+        }
+
+        private void MakeAllRowsReadonly()
+        {
+            for (int i = 0; i < Products_dataGridView.RowCount; i++)
+            {
+                Products_dataGridView.Rows[i].ReadOnly = true;
+                Products_dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
+            }
         }
 
         private void change_button_Click(object sender, EventArgs e)
@@ -84,7 +100,7 @@ namespace OrderForm
         {
             if (Products_dataGridView.SelectedRows.Count > 0)
             {
-                Products_dataGridView.Rows.Remove(Products_dataGridView.SelectedRows[0]);
+                Products_dataGridView.Rows.Remove(Products_dataGridView.CurrentRow);
             }
             else
             {
@@ -100,7 +116,8 @@ namespace OrderForm
 
         private void Products_dataGridView_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedProductId = Products_dataGridView.Rows[e.RowIndex].Cells[0].Value;
+            var selectedProductId = Products_dataGridView.Rows[e.RowIndex]
+                                        .Cells[Constant.ProductSelectionColumnIndex].Value;
 
             if (selectedProductId != null)
             {
@@ -109,7 +126,7 @@ namespace OrderForm
                 .Field<decimal>("Price");
 
                 Products_dataGridView.Rows[e.RowIndex]
-                    .Cells[Constant.PriceColumnIndex].Value = price * GetQuantityForRow(e.RowIndex);
+                    .Cells[Constant.PriceColumnIndex].Value = (price * GetQuantityForRow(e.RowIndex)).ToString("0.00");
             }
         }
 
@@ -119,6 +136,32 @@ namespace OrderForm
             {
                 e.Cancel = true;
                 MessageBox.Show("Proszę dodać produkt");
+            }
+
+            ValidateQuantityColumn(e);
+            ValidateProjectSelectionColumn(e);
+        }
+
+        private void ValidateQuantityColumn(CancelEventArgs e)
+        {
+            foreach (DataGridViewRow row in Products_dataGridView.Rows)
+            {
+                if (GetQuantityForRow(row.Index) == 0)
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Proszę podać ilość cyframi");
+                    break;
+                }
+            }
+        }
+
+        private void ValidateProjectSelectionColumn(CancelEventArgs e)
+        {
+            if (Products_dataGridView.Rows[Products_dataGridView.Rows.Count-1]
+                        .Cells[Constant.ProductSelectionColumnIndex].Value == null)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Proszę wybrać produkt");
             }
         }
 
@@ -134,7 +177,7 @@ namespace OrderForm
         private void Name_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char enteredChar = e.KeyChar;
-            if (!Char.IsControl(enteredChar) && !Char.IsLetter(enteredChar))
+            if (!IsAlphaCharacter(enteredChar))
             {
                 e.Handled = true;
             }
@@ -143,10 +186,15 @@ namespace OrderForm
         private void LastName_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char enteredChar = e.KeyChar;
-            if (!Char.IsControl(enteredChar) && !Char.IsLetter(enteredChar))
+            if (!IsAlphaCharacter(enteredChar))
             {
                 e.Handled = true;
             }
+        }
+
+        private bool IsAlphaCharacter(char enteredChar)
+        {
+            return Char.IsControl(enteredChar) || Char.IsLetter(enteredChar);
         }
 
         private void LastName_textBox_Validating(object sender, CancelEventArgs e)
@@ -160,12 +208,12 @@ namespace OrderForm
 
         private void SaveToXml_button_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            if (ValidateChildren())
             {
                 try
                 {
-                    _xmlRepo.Save(Name_textBox.Text.Trim(),
-                            LastName_textBox.Text.Trim(), DateOfBirth.Value, Products_dataGridView.Rows);
+                    _xmlRepo.Save(Name_textBox.Text.Trim(), LastName_textBox.Text.Trim(),
+                                        DateOfBirth.Value, Products_dataGridView.Rows);
                 }
                 catch (Exception ex)
                 { MessageBox.Show("Wystąpił bład zapisu do XML"); }
@@ -174,7 +222,7 @@ namespace OrderForm
 
         private void SaveToDB_button_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            if (ValidateChildren())
             {
                 try
                 {

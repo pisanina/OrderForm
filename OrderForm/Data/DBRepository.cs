@@ -15,11 +15,11 @@ namespace OrderForm.Data
             {
                 sqlConnection.Open();
                 SqlCommand sqlSaveToDB = new SqlCommand("NewOrder", sqlConnection);
-                sqlSaveToDB.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlSaveToDB.CommandType = CommandType.StoredProcedure;
                 sqlSaveToDB.Parameters.AddWithValue("@FirstName", firstName); // Wanna try some sql injection? ;)
                 sqlSaveToDB.Parameters.AddWithValue("@LastName", lastName);
                 sqlSaveToDB.Parameters.AddWithValue("@BirthDate", dateofBirth);
-                sqlSaveToDB.Parameters.AddWithValue("@ListOfProduct", GetProductsFromGrid(productsFromGrid));
+                sqlSaveToDB.Parameters.AddWithValue("@ListOfProduct", ToDataTable(productsFromGrid));
                 sqlSaveToDB.ExecuteNonQuery();
             }
         }
@@ -31,7 +31,7 @@ namespace OrderForm.Data
             {
                 sqlConnection.Open();
                 SqlCommand sqlGetProductList = new SqlCommand("GetProductList", sqlConnection);
-                sqlGetProductList.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlGetProductList.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter sqlDA = new SqlDataAdapter(sqlGetProductList);
                 DataTable dt = new DataTable();
                 sqlDA.Fill(dt);
@@ -39,7 +39,7 @@ namespace OrderForm.Data
             }
         }
 
-        private DataTable GetProductsFromGrid(DataGridViewRowCollection productsFromGrid)
+        private DataTable ToDataTable(DataGridViewRowCollection productsFromGrid)
         {
             var dataTable = new DataTable();
             dataTable.Columns.Add("ProductId");
@@ -48,8 +48,8 @@ namespace OrderForm.Data
             foreach (DataGridViewRow row in productsFromGrid)
             {
                 DataRow dataRow = dataTable.NewRow();
-                dataRow["ProductId"] = row.Cells[0].Value;
-                dataRow["Quantity"] = row.Cells[1].Value;
+                dataRow["ProductId"] = row.Cells[Constant.ProductSelectionColumnIndex].Value;
+                dataRow["Quantity"] = row.Cells[Constant.QuantityColumnIndex].Value;
                 dataTable.Rows.Add(dataRow);
             }
 
