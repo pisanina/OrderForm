@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant.cs" />
+    <Compile Include="Data\DBRepository.cs" />
+    <Compile Include="Data\IReadRepository.cs" />
+    <Compile Include="Data\IReadWriteRepository.cs" />
+    <Compile Include="Data\IWriteRepository.cs" />
+    <Compile Include="Data\XMLRepository.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Product.cs" />

@@ -473,15 +473,6 @@
   <data name="Price.HeaderText" xml:space="preserve">
     <value>Cena</value>
   </data>
-  <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Id.HeaderText" xml:space="preserve">
-    <value>ProductID</value>
-  </data>
-  <data name="Id.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="Products_dataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 327</value>
   </data>
@@ -524,6 +515,18 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Nowe zamówienie</value>
   </data>
+  <data name="&gt;&gt;getProductListBindingSource1.Name" xml:space="preserve">
+    <value>getProductListBindingSource1</value>
+  </data>
+  <data name="&gt;&gt;getProductListBindingSource1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listOfProductsBindingSource.Name" xml:space="preserve">
+    <value>listOfProductsBindingSource</value>
+  </data>
+  <data name="&gt;&gt;listOfProductsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ProductName.Name" xml:space="preserve">
     <value>ProductName</value>
   </data>
@@ -541,24 +544,6 @@
   </data>
   <data name="&gt;&gt;Price.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Id.Name" xml:space="preserve">
-    <value>Id</value>
-  </data>
-  <data name="&gt;&gt;Id.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;getProductListBindingSource1.Name" xml:space="preserve">
-    <value>getProductListBindingSource1</value>
-  </data>
-  <data name="&gt;&gt;getProductListBindingSource1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listOfProductsBindingSource.Name" xml:space="preserve">
-    <value>listOfProductsBindingSource</value>
-  </data>
-  <data name="&gt;&gt;listOfProductsBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>NewOrder</value>

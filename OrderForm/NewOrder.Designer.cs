@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewOrder));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,12 +45,11 @@
             this.LastName_textBox = new System.Windows.Forms.TextBox();
             this.DateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.Products_dataGridView = new System.Windows.Forms.DataGridView();
+            this.getProductListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.listOfProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProductName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.getProductListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.listOfProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Products_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getProductListBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listOfProductsBindingSource)).BeginInit();
@@ -136,33 +135,30 @@
             // Products_dataGridView
             // 
             this.Products_dataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Products_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Products_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.Products_dataGridView, "Products_dataGridView");
             this.Products_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
             this.Quantity,
-            this.Price,
-            this.Id});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Products_dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Price});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Products_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.Products_dataGridView.MultiSelect = false;
             this.Products_dataGridView.Name = "Products_dataGridView";
             this.Products_dataGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_CellLeave);
-            this.Products_dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_CellValueChanged);
-            this.Products_dataGridView.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_RowLeave);
             this.Products_dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Products_dataGridView_RowsAdded);
             this.Products_dataGridView.Validating += new System.ComponentModel.CancelEventHandler(this.Products_dataGridView_Validating);
             // 
@@ -184,13 +180,7 @@
             this.Price.DataPropertyName = "Price";
             resources.ApplyResources(this.Price, "Price");
             this.Price.Name = "Price";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            resources.ApplyResources(this.Id, "Id");
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
+            this.Price.ReadOnly = true;
             // 
             // NewOrder
             // 
@@ -240,7 +230,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
     }
 }
 

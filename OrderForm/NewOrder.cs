@@ -1,57 +1,47 @@
-﻿using OrderForm.Model;
+﻿using OrderForm.Data;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace OrderForm
 {
     public partial class NewOrder : Form
     {
+        private IWriteRepository _xmlRepo;
+        private IReadWriteRepository _dbRepo;
+
         public NewOrder()
         {
             InitializeComponent();
+            _xmlRepo = new XMLRepository();
+            _dbRepo = new DBRepository();
             DateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
         }
 
         private DataTable _productsList;
-
-        private int _productSelectionColumnIndex = 0;
-        private int _quantityColumnIndex = 1;
-        private int _priceColumnIndex=2;
 
         private int GetQuantityForRow(int rowIndex)
         {
             int result;
 
             int.TryParse(Products_dataGridView.Rows[rowIndex]
-                    .Cells[_quantityColumnIndex].Value.ToString(), out result);
+                    .Cells[Constant.QuantityColumnIndex].Value.ToString(), out result);
 
             return result;
         }
 
         private void NewOrder_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'listOfProducts.GetProductList' table. You can move, or remove it, as needed.
-            //this.getProductListTableAdapter.Fill(this.listOfProducts.GetProductList);
+            var dt =_dbRepo.Read();
 
-            using (SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["OrderForm.Properties.Settings.OrderFormConnectionString"].ConnectionString))
-            {
-                sqlConnection.Open();
-                SqlCommand sqlGetProductList = new SqlCommand("GetProductList", sqlConnection);
-                sqlGetProductList.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlDataAdapter sqlDA = new SqlDataAdapter(sqlGetProductList);
-                DataTable dt = new DataTable();
-                sqlDA.Fill(dt);
-                this.ProductName.DisplayMember = "Name";
-                this.ProductName.ValueMember = "Id";
-                this.ProductName.DataSource = dt;
-                _productsList = dt;
-            }
+            this.ProductName.DisplayMember = "Name";
+            this.ProductName.ValueMember = "Id";
+            this.ProductName.DataSource = dt;
+            _productsList = dt;
         }
 
         private void add_button_Click(object sender, EventArgs e)
@@ -64,7 +54,13 @@ namespace OrderForm
                 else
                 {
                     Products_dataGridView.Rows.Add();
-                    Products_dataGridView.Rows[Products_dataGridView.Rows.Count - 2].ReadOnly = true;
+
+                    for (int i = 0; i < Products_dataGridView.RowCount-1; i++)
+                    {
+                        Products_dataGridView.Rows[i].ReadOnly = true;
+                        Products_dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
+                    }
+                  
                 }
             }
             else
@@ -75,7 +71,8 @@ namespace OrderForm
         {
             if (Products_dataGridView.SelectedRows.Count > 0)
             {
-                Products_dataGridView.SelectedRows[0].ReadOnly = false;
+                Products_dataGridView.CurrentRow.ReadOnly = false;
+                Products_dataGridView.CurrentRow.DefaultCellStyle.BackColor = Color.White;
             }
             else
             {
@@ -95,22 +92,10 @@ namespace OrderForm
             }
         }
 
-        private void getProductListBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-        }
-
         private void Products_dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             Products_dataGridView.Rows[Products_dataGridView.Rows.Count - 1]
-                .Cells[_quantityColumnIndex].Value = "1";
-        }
-
-        private void Products_dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void Products_dataGridView_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
+                .Cells[Constant.QuantityColumnIndex].Value = "1";
         }
 
         private void Products_dataGridView_CellLeave(object sender, DataGridViewCellEventArgs e)
@@ -124,27 +109,8 @@ namespace OrderForm
                 .Field<decimal>("Price");
 
                 Products_dataGridView.Rows[e.RowIndex]
-                    .Cells[_priceColumnIndex].Value = price * GetQuantityForRow(e.RowIndex);
+                    .Cells[Constant.PriceColumnIndex].Value = price * GetQuantityForRow(e.RowIndex);
             }
-        }
-
-        
-
-        private DataTable GetProductsFromGrid()
-        {
-            var dataTable = new DataTable();
-            dataTable.Columns.Add("ProductId");
-            dataTable.Columns.Add("Quantity");
-
-            foreach (DataGridViewRow row in Products_dataGridView.Rows)
-            {
-                DataRow dataRow = dataTable.NewRow();
-                dataRow["ProductId"] = row.Cells[0].Value;
-                dataRow["Quantity"] = row.Cells[1].Value;
-                dataTable.Rows.Add(dataRow);
-            }
-
-            return dataTable;
         }
 
         private void Products_dataGridView_Validating(object sender, CancelEventArgs e)
@@ -196,43 +162,10 @@ namespace OrderForm
         {
             if (this.ValidateChildren())
             {
-                Client customer = new Client
-                {
-                    FirstName = Name_textBox.Text.Trim(),
-                    LastName = LastName_textBox.Text.Trim(),
-                    BirthDate = DateOfBirth.Value
-                };
-
-                List<Product> products = new List<Product>();
-
-                foreach (DataGridViewRow row in Products_dataGridView.Rows)
-                {
-                    Product selectedProduct = new Product();
-                    selectedProduct.ProductId = (int)row.Cells[_productSelectionColumnIndex].Value;
-                    selectedProduct.Name = row.Cells[_productSelectionColumnIndex].FormattedValue.ToString();
-                    selectedProduct.Quantity = Convert.ToInt32(row.Cells[_quantityColumnIndex].Value);
-                    products.Add(selectedProduct);
-                }
-
-                Order order = new Order
-                {
-                    Customer = customer,
-                    Products = products
-                };
                 try
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(order.GetType());
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.DefaultExt = "xml";
-                    saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
-                    saveFileDialog.FileName = "Order_" + DateTime.Now.ToString("dd-MM-yy_HH-mm-ss");
-                    saveFileDialog.ShowDialog();
-                    //var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//Order.xml";
-                    // System.IO.FileStream file = System.IO.File.Create(path);
-                    var file = saveFileDialog.OpenFile();
-                    xmlSerializer.Serialize(file, order);
-                    file.Close();
-                    MessageBox.Show("Zapisano nowe zamówienie w pliku Xml");
+                    _xmlRepo.Save(Name_textBox.Text.Trim(),
+                            LastName_textBox.Text.Trim(), DateOfBirth.Value, Products_dataGridView.Rows);
                 }
                 catch (Exception ex)
                 { MessageBox.Show("Wystąpił bład zapisu do XML"); }
@@ -245,21 +178,26 @@ namespace OrderForm
             {
                 try
                 {
-                    using (SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["OrderForm.Properties.Settings.OrderFormConnectionString"].ConnectionString))
-                    {
-                        sqlConnection.Open();
-                        SqlCommand sqlSaveToDB = new SqlCommand("NewOrder", sqlConnection);
-                        sqlSaveToDB.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlSaveToDB.Parameters.AddWithValue("@FirstName", Name_textBox.Text.Trim()); // Wanna try some sql injection? ;)
-                        sqlSaveToDB.Parameters.AddWithValue("@LastName", LastName_textBox.Text.Trim());
-                        sqlSaveToDB.Parameters.AddWithValue("@BirthDate", DateOfBirth.Value);
-                        sqlSaveToDB.Parameters.AddWithValue("@ListOfProduct", GetProductsFromGrid());
-                        sqlSaveToDB.ExecuteNonQuery();
-                    }
+                    _dbRepo.Save(Name_textBox.Text.Trim(),
+                            LastName_textBox.Text.Trim(), DateOfBirth.Value, Products_dataGridView.Rows);
+
                     MessageBox.Show("Dodano nowe zamówienie do bazy danych");
                 }
+                catch (SqlException exSql)
+                {
+                    if (exSql.ToString().Contains("CH_Product_Availability"))
+                    {
+                        MessageBox.Show("Przekroczone stany magazynowe");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 catch (Exception ex)
-                { MessageBox.Show("Wystąpił bład zapisu"); }
+                {
+                    MessageBox.Show("Wystąpił bład zapisu");
+                }
             }
         }
     }

@@ -66,8 +66,9 @@ Go
   Grant EXECUTE ON GetProductList to orderForm  
      
 
-  Go
-CREATE Procedure NewOrder 
+
+GO
+Create Procedure [dbo].[NewOrder] 
   @FirstName nvarchar(32), @LastName nvarchar(32), @BirthDate Date, 
   @ListOfProduct ProductList readonly 
   AS
@@ -77,16 +78,22 @@ CREATE Procedure NewOrder
 			  Insert Into Client (FirstName, LastName, BirthDate) Values 
 									 (@FirstName, @LastName, @BirthDate)
 
+				Update Product Set [Availability] -= Lop.Quantity 
+				From Product Inner Join @ListOfProduct AS Lop ON Product.Id=Lop.ProductId
+
 				Insert Into [Order] (ClientId) values (Scope_Identity())
 
 			  Insert Into [ProductOrder] (OrderId, ProductId, Quantity, ActualPrice) 
 				Select SCOPE_IDENTITY(), ProductId, Quantity, Price   From @ListOfProduct 
 				Join Product On Product.Id = ProductId
+
+
 		COMMIT TRANSACTION 
 	end try
   begin catch
 	  Rollback TRANSACTION 
-	  Print'Transaction Rolled Back'
+	  Print'Transaction Rolled Back';
+	  throw
   end catch
   end
 
