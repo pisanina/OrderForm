@@ -106,10 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\DPS_SQL.sql" />
-    <Content Include="OrderFormDB.mdf">
+    <Content Include="App_Data\OrderFormDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="OrderFormDB_log.ldf">
+    <Content Include="App_Data\OrderFormDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>OrderFormDB.mdf</DependentUpon>
     </Content>
