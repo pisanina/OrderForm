@@ -452,14 +452,20 @@
   <data name="Products_dataGridView.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
+  <metadata name="ProductId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ProductId.HeaderText" xml:space="preserve">
+    <value>ProductId</value>
+  </data>
+  <data name="ProductId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <metadata name="ProductName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ProductName.HeaderText" xml:space="preserve">
-    <value>Nazwa produktu</value>
-  </data>
-  <data name="ProductName.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>Nazwa Produktu</value>
   </data>
   <metadata name="Quantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -474,7 +480,7 @@
     <value>Cena</value>
   </data>
   <data name="Products_dataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 327</value>
+    <value>29, 336</value>
   </data>
   <data name="Products_dataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>743, 422</value>
@@ -527,11 +533,17 @@
   <data name="&gt;&gt;listOfProductsBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ProductId.Name" xml:space="preserve">
+    <value>ProductId</value>
+  </data>
+  <data name="&gt;&gt;ProductId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ProductName.Name" xml:space="preserve">
     <value>ProductName</value>
   </data>
   <data name="&gt;&gt;ProductName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Quantity.Name" xml:space="preserve">
     <value>Quantity</value>

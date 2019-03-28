@@ -29,9 +29,9 @@ namespace OrderForm.Data
             foreach (DataGridViewRow row in grid)
             {
                 Product selectedProduct = new Product(
-                    (int)row.Cells[Constant.ProductSelectionColumnIndex].Value,
-                    row.Cells[Constant.ProductSelectionColumnIndex].FormattedValue.ToString(),
-                    Convert.ToInt32(row.Cells[Constant.QuantityColumnIndex].Value));
+                      (int)row.Cells[Constant.ProductIDColumnIndex].Value,
+                      row.Cells[Constant.ProductNameColumnIndex].FormattedValue.ToString(),
+                      Convert.ToInt32(row.Cells[Constant.QuantityColumnIndex].Value));
                 products.Add(selectedProduct);
             }
             return products;

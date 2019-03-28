@@ -48,7 +48,7 @@ namespace OrderForm.Data
             foreach (DataGridViewRow row in productsFromGrid)
             {
                 DataRow dataRow = dataTable.NewRow();
-                dataRow["ProductId"] = row.Cells[Constant.ProductSelectionColumnIndex].Value;
+                dataRow["ProductId"] = row.Cells[Constant.ProductIDColumnIndex].Value;
                 dataRow["Quantity"] = row.Cells[Constant.QuantityColumnIndex].Value;
                 dataTable.Rows.Add(dataRow);
             }

@@ -47,7 +47,8 @@
             this.Products_dataGridView = new System.Windows.Forms.DataGridView();
             this.getProductListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.listOfProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ProductName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Products_dataGridView)).BeginInit();
@@ -135,6 +136,7 @@
             // Products_dataGridView
             // 
             this.Products_dataGridView.AllowUserToAddRows = false;
+            this.Products_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,6 +147,7 @@
             this.Products_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.Products_dataGridView, "Products_dataGridView");
             this.Products_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductId,
             this.ProductName,
             this.Quantity,
             this.Price});
@@ -158,22 +161,27 @@
             this.Products_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.Products_dataGridView.MultiSelect = false;
             this.Products_dataGridView.Name = "Products_dataGridView";
-            this.Products_dataGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.Products_dataGridView_CellLeave);
-            this.Products_dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Products_dataGridView_RowsAdded);
+            this.Products_dataGridView.ReadOnly = true;
             this.Products_dataGridView.Validating += new System.ComponentModel.CancelEventHandler(this.Products_dataGridView_Validating);
+            // 
+            // ProductId
+            // 
+            resources.ApplyResources(this.ProductId, "ProductId");
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
             // 
             // ProductName
             // 
-            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ProductName.DataPropertyName = "Name";
             resources.ApplyResources(this.ProductName, "ProductName");
             this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
             // 
             // Quantity
             // 
             this.Quantity.DataPropertyName = "Quantity";
             resources.ApplyResources(this.Quantity, "Quantity");
             this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
             // 
             // Price
             // 
@@ -227,7 +235,8 @@
         private System.Windows.Forms.BindingSource listOfProductsBindingSource;
         private System.Windows.Forms.BindingSource getProductListBindingSource;
         private System.Windows.Forms.BindingSource getProductListBindingSource1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
     }
